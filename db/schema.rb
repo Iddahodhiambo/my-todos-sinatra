@@ -10,22 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_25_114726) do
-  create_table "todos", force: :cascade do |t|
-    t.string "title", null: false
-    t.string "description", null: false
-    t.datetime "due"
-    t.datetime "createdAt", null: false
-    t.integer "status", default: 0, null: false
+ActiveRecord::Schema[7.0].define(version: 2023_03_03_203151) do
+  create_table "tasks", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.date "due_date"
+    t.boolean "completion_status"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "full_name", null: false
     t.string "email", null: false
     t.string "password_hash", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "uk_email", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end
